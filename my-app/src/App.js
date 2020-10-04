@@ -6,10 +6,19 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import about from './about.js';
 import welcome from './welcomep.js';
+
 export default class App extends React.Component {
   constructor(){
     super();
- //   this.handleclick=this.handleclick.bind(this);
+    this.state={open:false};
+  this.handleclick=this.handleclick.bind(this);
+  }
+  handleclick(){
+    this.setState(state => {
+      return {
+        open: !state.open,
+      };
+    });
   }
  render(){
   return (
@@ -17,7 +26,17 @@ export default class App extends React.Component {
      <Router>
     <div>
    <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>
-     <img src={require('./list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}}/*onClick={this.handleclick}*/></img>
+     <img src={require('./list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}}onClick={this.handleclick}></img>
+     {this.state.open && (
+            <div class="container">
+              <ul style={{backgroundColor:"white"}}>
+                <li>Men's Fashions</li>
+                <li>Women's Fashions</li>
+                <li>Phones and Telecommunication</li>
+                <li>Home Items</li>
+              </ul>
+            </div>
+          )}
      <div style={{display:"flex",marginRight:"650px"}}>
    <p style={{color:"rgb(226,226,255)"}}><b>EASY</b></p>
     <img src={require('./cart.png')} width="40px" height="40px" alt="there is an error"></img>
