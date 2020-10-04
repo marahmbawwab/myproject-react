@@ -25,8 +25,8 @@ export default class App extends React.Component {
     <div >
      <Router>
     <div>
-   <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>
-     <img src={require('./list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}}onClick={this.handleclick}></img>
+   <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>  
+     <img src={require('./list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}} onClick={this.handleclick}></img>
      {this.state.open && (
             <div class="container">
               <ul style={{backgroundColor:"white"}}>
