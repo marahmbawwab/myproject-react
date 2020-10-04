@@ -1,6 +1,11 @@
 .App {
   text-align: center;
 }
+.cont{
+  background-image:url('./welcome.png') ;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
 
 .App-logo {
   height: 40vmin;

@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
   return (
-    <div style={{backgroundImage:"URL('./welcome.jpg')",height:"100vh"}}>
-     
+    <div className="cont">
+  
     </div>
   );
 }
