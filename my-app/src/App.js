@@ -47,7 +47,7 @@ export default class App extends React.Component {
    </nav>
    <Switch>
      <Route  path ="/about" component={about}/>
-     <Route  path ="/" component={welcome}/>
+     <Route  path ="/" ><welcome/></Route>
    </Switch>
    </div>
 </Router>
