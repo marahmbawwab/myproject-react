@@ -38,7 +38,7 @@ export default class App extends React.Component {
               </ul>
           )}
           </OverlayPanel>
-     <div style={{display:"flex",marginRight:"60px"}}>
+     <div style={{display:"flex",marginRight:"650px"}}>
    <p style={{color:"rgb(226,226,255)"}}><b>EASY</b></p>
     <img  src={require('./images/cart.png')} width="40px" height="40px" alt="there is an error" ></img>
     <p style={{color:"rgb(226,226,255)"}}><b>SHOP</b></p>

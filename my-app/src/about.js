@@ -4,9 +4,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import './mydesign.css';
 
-
-
-export default class about extends React.Component {
+class about extends React.Component {
   
   render(){
     return(
@@ -15,3 +13,4 @@ export default class about extends React.Component {
     );
   }
 }
+export default about ;

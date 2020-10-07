@@ -45,3 +45,7 @@
     padding-Top:100px ;
     background:pink;
 }
+.d{
+    display: flex;
+    flex-direction: row;
+}
