@@ -34,7 +34,6 @@ export default class App extends React.Component {
               <ul style={{backgroundColor:"white"}}>
                 <li>Men's Fashions</li>
                 <li>Women's Fashions</li>
-                <li>Home Items</li>
               </ul>
           )}
           </OverlayPanel>
