@@ -45,7 +45,25 @@
     padding-Top:100px ;
     background:pink;
 }
+.tt{
+    height: 100vh;
+    font-Size:40px ;
+    width: 50%;
+    text-align: center;
+    padding-top: 15%; 
+}
 .d{
     display: flex;
     flex-direction: row;
+    background: linear-gradient(pink , pink ,cyan);
+}
+.dd {
+    align-self: auto;
+    margin: 10%;
+}
+.item{
+    display:flex; 
+    flex-Direction:row ;
+    justify-Content:space-around ;
+    margin-Left:70% ;
 }

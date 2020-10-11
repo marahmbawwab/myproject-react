@@ -3,7 +3,6 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import './mydesign.css';
-
 class about extends React.Component {
   
   render(){
