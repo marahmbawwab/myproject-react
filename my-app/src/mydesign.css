@@ -69,3 +69,7 @@
     justify-Content:space-around ;
     margin-Left:70% ;
 }
+.unav{
+    background-Color:rgb(0,0,0,0.8) ;
+    display: flex;
+}
