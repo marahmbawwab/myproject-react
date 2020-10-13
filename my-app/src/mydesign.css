@@ -42,7 +42,9 @@
 }
 .contain{
     height:100vh ;
-    padding-Top:100px ;
+    padding-Top:10% ;
+    padding-left: 8%;
+    font-size: 30px;
     background:pink;
 }
 .tt{
