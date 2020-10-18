@@ -18,7 +18,7 @@ export default class Signin extends React.Component {
     return (
       <div className="Par">
         <div className="d2" >
-        <img src={require('./images/person.jpg')} alt="no-display" width="80px" height="80px" className="d3"/>
+        <img src={require('./images/user.png')} alt="no-display" width="80px" height="80px" className="d3"/>
           <div className="d4">
             <label htmlFor="username" style={{ width: "100px", height: "20px" }} ><b>UserName</b></label>
             <InputText id="username" name="usern"  />
