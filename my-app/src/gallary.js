@@ -38,8 +38,7 @@ let items = [
 ];
 const header = <img alt="Card" width="25%" height="20%" src={require('./images/navc.png')}/>;
 const footer = <span>
-    <Button label="Save" icon="pi pi-check" style={{marginRight: '.25em'}}/>
-    <Button label="Cancel" icon="pi pi-times" className="p-button-secondary"/>
+    <Button label="Show" className="p-button-help" style={{marginLeft: "35%"}}/>
 </span>;
 export default class gallary extends React.Component {
     render(){

@@ -11,7 +11,7 @@ import welcome from './welcomep.js';
 export default class App extends React.Component {
   constructor(){
     super();
-    this.state={open:false};
+    this.state={open:false,op:false};
   this.handleclick=this.handleclick.bind(this);
   }
   handleclick(e){
@@ -21,7 +21,7 @@ export default class App extends React.Component {
         open: !state.open,
       };
     });
-  }
+    }
  render(){
   return (
     <div >
@@ -32,7 +32,7 @@ export default class App extends React.Component {
      <OverlayPanel ref={el => (this.op = el)}>
      {this.state.open && (
               <ul style={{backgroundColor:"white"}}>
-                <li>Men's Fashions</li>
+                <li>Men's Fashions </li>
                 <li>Women's Fashions</li>
               </ul>
           )}
