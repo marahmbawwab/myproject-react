@@ -7,7 +7,7 @@ import 'primeicons/primeicons.css';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import about from './about.js';
 import welcome from './welcomep.js';
-
+import signin from './signin';
 export default class App extends React.Component {
   constructor(){
     super();
@@ -46,7 +46,7 @@ export default class App extends React.Component {
    <Link to="/about" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"15%"}}><b>About Us</b></Link>
    </nav>
    <Switch>
-     <Route  path ="/about" component={about}/>
+     <Route  path ="/about" component={signin}/>
      <Route  path ="/" component={welcome}></Route>
    </Switch>
    </div>
