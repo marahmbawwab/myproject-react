@@ -9,10 +9,8 @@ import { Button } from 'primereact/button';
 import './mydesign.css';
 import Axios from 'axios';
 import './App.css';
+import { response } from 'express';
 export default class Signin extends React.Component {
-  state = {
-    flag:false
-  }
    constructor(){
         super();
         this.state={checked :false ,username:" ",password:" "};
@@ -21,21 +19,17 @@ export default class Signin extends React.Component {
       console.log("hiiii");
       //event.preventDefault();
     //Axios.post("http://localhost:3000/about",{user:this.state.username,pass:this.state.password});
-    const order={
-      user:this.state.username,
-      pass:this.state.password
-    }
-    Axios.post( '/about.json', order )
-    .then( response => {
-       // this.props.history.push('/');
-       this.setState({flag:true})
-
-    } )
-    .catch( error => {
-      //  setLoading(false);
-      this.setState({flag:true})
-    } );  
-    console.log(this.state.flag)
+  /*Axios.post('http://localhost:3000/about', {
+      firstName: 'Finn',
+      lastName: 'Williams'
+    })
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });*/
+   Axios.get("/about").then(function(response) {console.log(response.data)});
+       
   }
    render() {
     return (

@@ -1,4 +1,6 @@
 const { response } = require('express');
+const bodyParser = require("body-parser");
+const path = require('path');
 const express=require('express');//create express server 
 var mysql = require('mysql');
 const cors =require("cors");
@@ -30,11 +32,12 @@ con.connect(function(err) {
     });
   });
 });*/
-app.use(cors);
-app.get("/about", (req, res, next) => {
-  res.send(["Tony","Lisa","Michael","Ginger","Food"]);
+app.use(cors());
+app.get('/about',function(req, res){
+  res.send("marah");
  });
 app.listen(3000,()=>{
+  
 console.log('listening to port 3000');
 });
 /*con.query(' DELETE from user_info', function (error, results, fields) {
@@ -44,7 +47,7 @@ console.log('listening to port 3000');
   results.forEach(result => {
       console.log(result);
   });
-});
-*/
+});*/
+
 
 //con.end();
