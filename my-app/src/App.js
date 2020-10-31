@@ -7,7 +7,8 @@ import 'primeicons/primeicons.css';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import about from './about.js';
 import welcome from './welcomep.js';
-import signin from './signin';
+import signup from './signup.js';
+import signin from './signin.js';
 export default class App extends React.Component {
   constructor(){
     super();
@@ -27,6 +28,7 @@ export default class App extends React.Component {
     <div >
      <Router>
     <div>
+{(this.props.location==='/'|this.props.location==='/about'|this.props.location==='') &&
    <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>  
      <img  src={require('./images/list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}} onClick={this.handleclick }></img>
      <OverlayPanel ref={el => (this.op = el)}>
@@ -45,8 +47,11 @@ export default class App extends React.Component {
    <Link to="/" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"10%"}}><b>Home</b></Link>
    <Link to="/about" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"15%"}}><b>About Us</b></Link>
    </nav>
-   <Switch>
-     <Route  path ="/about" component={signin}/>
+ }
+   <Switch location={location}>
+   <Route  path ="/signin" component={signin}></Route>
+   <Route  path ="/signup" component={signup}></Route>
+     <Route  path ="/about" component={about}/>
      <Route  path ="/" component={welcome}></Route>
    </Switch>
    </div>

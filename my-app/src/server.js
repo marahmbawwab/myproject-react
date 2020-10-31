@@ -1,9 +1,10 @@
 const { response } = require('express');
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const path = require('path');
 const express=require('express');//create express server 
 var mysql = require('mysql');
-const cors =require("cors");
+const cors =require('cors');
+const { stringify } = require('querystring');
 const app= express();
 var con = mysql.createConnection({
   host: 'localhost',
@@ -32,14 +33,18 @@ con.connect(function(err) {
     });
   });
 });*/
-app.use(cors());
-app.get('/about',function(req, res){
-  res.send("marah");
- });
-app.listen(3000,()=>{
-  
-console.log('listening to port 3000');
+//app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+app.listen(3000,()=>{console.log('listening to port 3000');
 });
+app.get('/',function(req, res){
+ res.setHeader('Content-Type', 'application/json');
+ res.send({message:"we did it !"});
+ });
 /*con.query(' DELETE from user_info', function (error, results, fields) {
   if (error)
       throw error;

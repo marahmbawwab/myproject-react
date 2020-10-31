@@ -9,7 +9,6 @@ import { Button } from 'primereact/button';
 import './mydesign.css';
 import Axios from 'axios';
 import './App.css';
-import { response } from 'express';
 export default class Signin extends React.Component {
    constructor(){
         super();
@@ -28,9 +27,21 @@ export default class Signin extends React.Component {
     }, (error) => {
       console.log(error);
     });*/
-   Axios.get("/about").then(function(response) {console.log(response.data)});
-       
-  }
+   /* Axios.get('/')
+  .then(function (response) {
+    console.log(response);
+    console.log(response.status);
+    //console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
+  });*/
+  Axios.get("/",{headers:{"Content-Type": "application/json"}}).then(res => {
+    console.log(res.status);
+    console.log(res.data.message);
+    console.log(res.config);
+  });
+ 
+}
    render() {
     return (
       <div className="Par">

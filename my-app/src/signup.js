@@ -9,7 +9,9 @@ import { InputNumber } from 'primereact/inputnumber';
 import {Checkbox} from 'primereact/checkbox';
 import {Button}  from 'primereact/button';
 export default class signup extends React.Component {
-   
+   handle=()=>{
+    this.props.history.goBack();
+   }
     render(){
         return(
             <div className="d" >
@@ -59,7 +61,7 @@ export default class signup extends React.Component {
 </div>
           </div>
           <div style={{marginLeft:"80%",marginTop:"10%"}}>
-        <Button style={{width:"180px"}}className="p-button-help p-button-raised p-button-rounded"><b style={{paddingRight:"20%",fontSize:"20px"}}>Register </b></Button>
+        <Button style={{width:"180px"}}className="p-button-help p-button-raised p-button-rounded" onClick={this.handle}><b style={{paddingRight:"20%",fontSize:"20px"}}>Register </b></Button>
             </div>
             </div>
             </div>
