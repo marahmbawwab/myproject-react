@@ -4,7 +4,10 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import './mydesign.css';
 class about extends React.Component {
-  
+  constructor(){
+    super();
+    this.state={loc:'/about'}
+  }
   render(){
     return(
       <div  className="contain">

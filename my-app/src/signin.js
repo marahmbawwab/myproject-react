@@ -12,7 +12,7 @@ import './App.css';
 export default class Signin extends React.Component {
    constructor(){
         super();
-        this.state={checked :false ,username:" ",password:" "};
+        this.state={checked :false ,username:" ",password:" ",loc:'/signin'};
     }
     handleclick=()=>{
       console.log("hiiii");
@@ -35,9 +35,9 @@ export default class Signin extends React.Component {
     console.log(response.headers);
     console.log(response.config);
   });*/
-  Axios.get("/",{headers:{"Content-Type": "application/json"}}).then(res => {
+  Axios.get("/mysign").then(res => {
     console.log(res.status);
-    console.log(res.data);
+    console.log(res.value);
     console.log(res.config);
   });
  

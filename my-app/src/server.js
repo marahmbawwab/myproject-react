@@ -37,12 +37,10 @@ con.connect(function(err) {
 app.use(cors({
   origin: 'http://localhost:3000'
 }));
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(3000,()=>{console.log('listening to port 3000');
 });
-app.get('/',function(req, res){
- res.setHeader('Content-Type', 'application/json');
+app.get('/mysign',function(req, res){
+// res.setHeader('Content-Type', 'application/json');
  res.send({message:"we did it !"});
  });
 /*con.query(' DELETE from user_info', function (error, results, fields) {

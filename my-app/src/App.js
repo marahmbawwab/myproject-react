@@ -1,21 +1,21 @@
 import React  from 'react';
 import './App.css'; 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import { OverlayPanel } from 'primereact/overlaypanel';
 import about from './about.js';
 import welcome from './welcomep.js';
 import signup from './signup.js';
 import signin from './signin.js';
+import Nav from './nav.js';
  class App extends React.Component {
-  constructor(){
-    super();
-    var currentLocation = window.location.pathname;
+  constructor(props){
+    super(props);
     this.state={open:false,op:false};
   this.handleclick=this.handleclick.bind(this);
   }
+
   handleclick(e){
     this.op.toggle(e);
     this.setState(state => {
@@ -25,75 +25,17 @@ import signin from './signin.js';
     });
     }
  render(){
+  //var currentLocation = window.location.pathname;
   return (
     <div >
      <Router>
     <div>
-    {(this.currentLocation==='/') &&
-   <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>  
-     <img  src={require('./images/list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}} onClick={this.handleclick }></img>
-     <OverlayPanel ref={el => (this.op = el)}>
-     {this.state.open && (
-              <ul style={{backgroundColor:"white"}}>
-                <li>Men's Fashions </li>
-                <li>Women's Fashions</li>
-              </ul>
-          )}
-          </OverlayPanel>
-     <div style={{display:"flex",marginRight:"650px"}}>
-   <p style={{color:"rgb(226,226,255)"}}><b>EASY</b></p>
-    <img  src={require('./images/cart.png')} width="40px" height="40px" alt="there is an error" ></img>
-    <p style={{color:"rgb(226,226,255)"}}><b>SHOP</b></p>
-    </div>
-   <Link to="/" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"10%"}}><b>Home</b></Link>
-   <Link to="/about" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"15%"}}><b>About Us</b></Link>
-   </nav>
- }
-  {(this.currentLocation==='/about') &&
-   <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>  
-     <img  src={require('./images/list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}} onClick={this.handleclick }></img>
-     <OverlayPanel ref={el => (this.op = el)}>
-     {this.state.open && (
-              <ul style={{backgroundColor:"white"}}>
-                <li>Men's Fashions </li>
-                <li>Women's Fashions</li>
-              </ul>
-          )}
-          </OverlayPanel>
-     <div style={{display:"flex",marginRight:"650px"}}>
-   <p style={{color:"rgb(226,226,255)"}}><b>EASY</b></p>
-    <img  src={require('./images/cart.png')} width="40px" height="40px" alt="there is an error" ></img>
-    <p style={{color:"rgb(226,226,255)"}}><b>SHOP</b></p>
-    </div>
-   <Link to="/" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"10%"}}><b>Home</b></Link>
-   <Link to="/about" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"15%"}}><b>About Us</b></Link>
-   </nav>
- }
- {(this.currentLocation===' ') &&
-   <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>  
-     <img  src={require('./images/list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}} onClick={this.handleclick }></img>
-     <OverlayPanel ref={el => (this.op = el)}>
-     {this.state.open && (
-              <ul style={{backgroundColor:"white"}}>
-                <li>Men's Fashions </li>
-                <li>Women's Fashions</li>
-              </ul>
-          )}
-          </OverlayPanel>
-     <div style={{display:"flex",marginRight:"650px"}}>
-   <p style={{color:"rgb(226,226,255)"}}><b>EASY</b></p>
-    <img  src={require('./images/cart.png')} width="40px" height="40px" alt="there is an error" ></img>
-    <p style={{color:"rgb(226,226,255)"}}><b>SHOP</b></p>
-    </div>
-   <Link to="/" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"10%"}}><b>Home</b></Link>
-   <Link to="/about" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"15%"}}><b>About Us</b></Link>
-   </nav>
- }
+    <Nav/>
    <Switch >
-   <Route  path ="/signin" component={signin}></Route>
-   <Route  path ="/signup" component={signup}></Route>
+   <Route  path ="/signin"  component={signin}/>
+   <Route  path ="/signup" component={signup}/>
      <Route  path ="/about" component={about}/>
-     <Route  path ="/" component={welcome}></Route>
+     <Route  path ="/" component={welcome} />
    </Switch>
    </div>
 </Router>

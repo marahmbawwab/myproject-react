@@ -9,6 +9,10 @@ import { InputNumber } from 'primereact/inputnumber';
 import {Checkbox} from 'primereact/checkbox';
 import {Button}  from 'primereact/button';
 export default class signup extends React.Component {
+  constructor(){
+    super();
+    this.state={loc:'/signup'}
+  }
    handle=()=>{
     this.props.history.goBack();
    }
