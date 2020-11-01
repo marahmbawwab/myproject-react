@@ -37,7 +37,7 @@ export default class Signin extends React.Component {
   });*/
   Axios.get("/",{headers:{"Content-Type": "application/json"}}).then(res => {
     console.log(res.status);
-    console.log(res.data.message);
+    console.log(res.data);
     console.log(res.config);
   });
  
