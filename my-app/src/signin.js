@@ -12,40 +12,22 @@ import './App.css';
 export default class Signin extends React.Component {
    constructor(){
         super();
-        this.state={checked :false ,username:" ",password:" ",loc:'/signin'};
+        this.state={checked :false ,username:"",password:"",loc:'/signin'};
     }
     handleclick=()=>{
-      console.log("hiiii");
-      //event.preventDefault();
-    //Axios.post("http://localhost:3000/about",{user:this.state.username,pass:this.state.password});
-  /*Axios.post('http://localhost:3000/about', {
-      firstName: 'Finn',
-      lastName: 'Williams'
-    })
-    .then((response) => {
-      console.log(response);
-    }, (error) => {
-      console.log(error);
-    });*/
-   /* Axios.get('/')
-  .then(function (response) {
-    console.log(response);
-    console.log(response.status);
-    //console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
-  });*/
+      if((this.state.password!=="")&&(this.state.password!=="")){
   Axios.get("http://localhost:3001/signin",{headers: {
     'Content-Type': 'application/json',
     "Clear-Site-Data": "*"
- }}).then(res => {
+ },data:{user:this.state.username,pass:this.state.password}}).then(res => {
     console.log(res.status);
-    console.log(res.config);
-    alert(res.data.message);
+   // alert(res.data.message);
+     console.log(res.data);
   });
- //  fetch('https://localhost:3001/signin')
-   //   .then(response => console.log(response.status));
- 
+}
+else {
+  alert("Please fill all the fields !");
+}
 }
    render() {
     return (
