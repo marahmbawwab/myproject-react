@@ -35,11 +35,16 @@ export default class Signin extends React.Component {
     console.log(response.headers);
     console.log(response.config);
   });*/
-  Axios.get("/mysign").then(res => {
+  Axios.get("http://localhost:3001/signin",{headers: {
+    'Content-Type': 'application/json',
+    "Clear-Site-Data": "*"
+ }}).then(res => {
     console.log(res.status);
-    console.log(res.value);
     console.log(res.config);
+    alert(res.data.message);
   });
+ //  fetch('https://localhost:3001/signin')
+   //   .then(response => console.log(response.status));
  
 }
    render() {
