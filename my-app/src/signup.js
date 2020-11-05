@@ -12,12 +12,23 @@ import Axios from 'axios';
 export default class signup extends React.Component {
   constructor(){
     super();
-    this.state={name:"",usern:"",pass:"",email:"",gender:""}
+    this.state={name:"",usern:"",pass:"",email:"",gender:"",check1:false,check2:false}
     this.phone="";
   }
    handle=()=>{
-   if((this.state.name !=="")&&(this.state.usern !=="")&&(this.state.pass!=="")&&(this.state.email!=="")&&(this.phone!=="")){
-    const json ={name:this.state.name,user:this.state.usern,pass:this.state.pass,phone:this.phone,email:this.state.email};
+     if(this.state.check1 && this.state.check2){
+       alert("please check one of the check boxes for gender not both of them !");
+     }
+     else if ((this.state.check1&&!this.state.check2)||(this.state.check2&&!this.state.check1)) {
+     if(this.state.check2){
+      this.setState({gender:"female"});
+     }
+     else {
+      this.setState({gender:"male"});
+     }
+     console.log(this.state.gender);
+   if((this.state.name !=="")&&(this.state.usern !=="")&&(this.state.pass!=="")&&(this.state.email!=="")&&(this.phone!=="")&&(this.state.gender!=="")){
+    const json ={name:this.state.name,user:this.state.usern,pass:this.state.pass,phone:this.phone,email:this.state.email,gender:this.state.gender};
   Axios.post("http://localhost:3001/signup",json,{headers: {'Content-Type': 'application/json'}}).then(res => {
   if(res.data.message === 'success!'){
     this.props.history.goBack();
@@ -29,6 +40,7 @@ export default class signup extends React.Component {
   else {
     alert("please fill all the fields !");
   }
+}
   }
     render(){
         return(
@@ -68,12 +80,12 @@ export default class signup extends React.Component {
             <label htmlhtmlFor="gender"><b style={{fontSize:"20px"}}>Gender:</b></label>
             <div style={{ marginLeft:"60%"}}>
             <div className="p-col-12">
-    <Checkbox inputId="cb1" value="Male"></Checkbox>
+    <Checkbox onChange={e => this.setState({check1: e.checked})} checked={this.state.check1} inputId="cb1" value="Male"></Checkbox>
     <label htmlFor="cb1" className="p-checkbox-label"><b>Male</b></label>
 </div>
 <br/>
 <div className="p-col-12">
-    <Checkbox inputId="cb2" value="Female"></Checkbox>
+    <Checkbox onChange={e => this.setState({check2: e.checked})} checked={this.state.check2} inputId="cb2" value="Female"></Checkbox>
     <label htmlFor="cb2" className="p-checkbox-label"><b>Female</b></label>
 </div>
 </div>
