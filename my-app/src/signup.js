@@ -8,14 +8,28 @@ import {Password} from 'primereact/password';
 import { InputNumber } from 'primereact/inputnumber';
 import {Checkbox} from 'primereact/checkbox';
 import {Button}  from 'primereact/button';
+import Axios from 'axios';
 export default class signup extends React.Component {
   constructor(){
     super();
-    this.state={loc:'/signup'}
+    this.state={name:"",usern:"",pass:"",email:"",gender:""}
+    this.phone="";
   }
    handle=()=>{
+   if((this.state.name !=="")&&(this.state.usern !=="")&&(this.state.pass!=="")&&(this.state.email!=="")&&(this.phone!=="")){
+    const json ={name:this.state.name,user:this.state.usern,pass:this.state.pass,phone:this.phone,email:this.state.email};
+  Axios.post("http://localhost:3001/signup",json,{headers: {'Content-Type': 'application/json'}}).then(res => {
+  if(res.data.message === 'success!'){
     this.props.history.goBack();
-   }
+  }
+  else {
+    alert(res.data.message);
+  }});
+  }
+  else {
+    alert("please fill all the fields !");
+  }
+  }
     render(){
         return(
             <div className="d" >
@@ -27,27 +41,27 @@ export default class signup extends React.Component {
             <br/>
             <div  className="item">
             <label htmlhtmlFor="full"><b style={{fontSize:"20px"}}>FullName:</b></label>
-              <InputText style={{marginLeft:"40%"}} id="full" />
+              <InputText style={{marginLeft:"40%"}} onChange={(e) => this.setState({ name: e.target.value })} id="full" />
           </div>
           <br/>
           <div  className="item">
             <label htmlhtmlFor="user"><b style={{fontSize:"20px"}}>UserName:</b></label>
-              <InputText style={{marginLeft:"35%"}} id="user" />
+              <InputText onChange={(e) => this.setState({ usern: e.target.value })} style={{marginLeft:"35%"}} id="user" />
           </div>
           <br/>
           <div  className="item" >
             <label htmlhtmlFor="pass"><b style={{fontSize:"20px"}}>Password:</b></label>
-              <Password style={{marginLeft:"40%"}} id="pass" />
+              <Password onChange={(e) => this.setState({ pass: e.target.value })}style={{marginLeft:"40%"}} id="pass" />
           </div>
           <br/>
           <div  className="item" >
             <label htmlhtmlFor="phone"><b style={{fontSize:"20px"}}>Phone:  </b>  </label>
-              <InputNumber style={{marginLeft:"65%"}} id="phone" />
+              <InputNumber onChange={(e) => this.phone =e.value}style={{marginLeft:"65%"}} id="phone" />
           </div>
           <br/>
           <div className="item">
             <label htmlhtmlFor="email"><b style={{fontSize:"20px"}}>Email:</b></label>
-              <InputText style={{marginLeft:"70%"}}id="email" keyfilter="Email" />
+              <InputText onChange={(e) => this.setState({ email: e.target.value })}style={{marginLeft:"70%"}}id="email" keyfilter="Email" />
           </div>
           <br/>
           <div  style={{ marginLeft:"33%"}}>
@@ -59,7 +73,7 @@ export default class signup extends React.Component {
 </div>
 <br/>
 <div className="p-col-12">
-    <Checkbox inputId="cb2" value="Female" ></Checkbox>
+    <Checkbox inputId="cb2" value="Female"></Checkbox>
     <label htmlFor="cb2" className="p-checkbox-label"><b>Female</b></label>
 </div>
 </div>

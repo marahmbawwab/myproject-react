@@ -3,6 +3,7 @@ const express=require('express');
 var mysql = require('mysql');
 const cors =require('cors');
 const app= express();
+var md5 = require('md5');
 const logger = require("morgan");
 var con = mysql.createConnection({
   host: 'localhost',
@@ -21,30 +22,45 @@ console.log('Connected !' );
 
 app.use(logger('dev'));
 app.use(cors());
-app.use(bodyParser.json({ type: 'application/*+json' }));
+//app.use(bodyParser.json({ type: 'application/*+json' }));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
   res.header("Content-Type",'application/json');
-  req.header("Content-Type",'application/json');
   next();
 }); 
 
 app.get('/signin', function(req, res) {
-  con.query("SELECT username,password FROM user_info", function (err, result, fields) {
+  var pass =md5([req.body.pass]);
+  con.query("SELECT username,password FROM user_info where username= ? and password= ?",[req.body.user],[pass], function (err, result, fields) {
     if (err) throw err;
-    res.json(result);
+    if(result.length===0){
+     res.json({message:"there is an error either in user name or password !"});
+    }
+    else {
+      res.json({message:"success!"});
+    }
   });
 });
 app.post('/signup', function(req, res) {
-
-  var password=req.body;
-  var username=req.body.user ;
-  var x ={mes:"i can do it"};
-  res.json(x);
-  console.log(password);
-  con.query("SELECT username,password FROM user_info", function (err, result, fields) {
+  con.query('SELECT username FROM user_info where username= ?',[req.body.user], function (err, result, fields) {
     if (err) throw err;
-    console.log(result);
+    var numRows = result.length;
+   if(numRows===0){
+        con.query('INSERT INTO user_info (name,username,password,phone,email,gender,type,status) VALUES (?,?,?,?,?,?,?,?) '
+        ,[req.body.name,req.body.user,md5(req.body.pass),req.body.phone,req.body.email,"dd","typical",1],function (err, result, fields) {
+          if (err) throw err;
+         if(result.affectedRows===1){
+          res.json({message:"success!"});
+         }
+         else {
+          res.json({message:"not success!"});
+         }
+        });
+    }
+    else {
+      res.json({message:"there is another one with that username!"});
+    }
   });
 });
 app.listen(3001,()=>{console.log('listening to port 3001');

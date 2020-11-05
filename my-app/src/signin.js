@@ -12,17 +12,21 @@ import './App.css';
 export default class Signin extends React.Component {
    constructor(){
         super();
-        this.state={checked :false ,username:"",password:"",loc:'/signin'};
+        this.state={checked :false ,username:"",password:""};
     }
     handleclick=()=>{
-      if((this.state.password!=="")&&(this.state.password!=="")){
-  Axios.get("http://localhost:3001/signin",{headers: {
+      if((this.state.username!=="")&&(this.state.password!=="")){
+        const json ={user:this.state.username,pass:this.state.password};
+  Axios.get("http://localhost:3001/signin",json,{headers: {
     'Content-Type': 'application/json',
     "Clear-Site-Data": "*"
- },data:{user:this.state.username,pass:this.state.password}}).then(res => {
-    console.log(res.status);
-   // alert(res.data.message);
-     console.log(res.data);
+ }}).then(res => {
+ if(res.data.message ==="success!"){
+  this.props.history.push('/account');
+ }
+ else {
+   alert(res.data.message);
+ }
   });
 }
 else {

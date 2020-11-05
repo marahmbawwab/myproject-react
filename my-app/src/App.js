@@ -9,6 +9,7 @@ import welcome from './welcomep.js';
 import signup from './signup.js';
 import signin from './signin.js';
 import Nav from './nav.js';
+import gallary from './gallary';
  class App extends React.Component {
   constructor(props){
     super(props);
@@ -32,6 +33,7 @@ import Nav from './nav.js';
     <div>
     <Nav/>
    <Switch >
+   <Route  path ="/account" component={gallary}/>
    <Route  path ="/signin"  component={signin}/>
    <Route  path ="/signup" component={signup}/>
      <Route  path ="/about" component={about}/>
