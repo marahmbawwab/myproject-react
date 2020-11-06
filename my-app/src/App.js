@@ -36,8 +36,8 @@ import gallary from './gallary';
    <Route  path ="/account" component={gallary}/>
    <Route  path ="/signin"  component={signin}/>
    <Route  path ="/signup" component={signup}/>
-     <Route  path ="/about" component={about}/>
-     <Route  path ="/" component={welcome} />
+   <Route  path ="/about" component={about}/>
+   <Route  path ="/" component={welcome} />
    </Switch>
    </div>
 </Router>
