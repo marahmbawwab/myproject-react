@@ -44,26 +44,6 @@ export default class gallary extends React.Component {
     render(){
         return(
          <div style={{display:"flex",flexDirection:"column"}}>
-             
-      <nav className="unav">
-      </nav>
-      <div style={{display:"flex",marginLeft:"8%"}}>
-      <div style={{display:"flex",marginLeft:"2%"}}>
-   <p style={{color:"rgb(226,226,255)"}}><b>EASY</b></p>
-    <img  src={require('./images/cart.png')}  width="40px" height="40px" alt="there is an error" ></img>
-    <p style={{color:"rgb(226,226,255)"}}><b>SHOP</b></p>
-    </div>
-      <p style={{marginLeft:"50%"}}><b>User Name</b></p>
-      <img  style={{tooltip:"click to see your cart"}}src={require('./images/navc.png')}height="40px" width="60px" alt="there is an error" ></img>
-      </div>
-      <div style={{display:"flex",flexDirection:"row"}}>
-     <PanelMenu model={items} style={{marginTop:"2%",width:'300px'}}/>
-     <div style={{marginLeft:"4%",display:"flex",flexDirection:"column"}}>
-          <Card footer={footer} header={header} title="product-name" subTitle="department-name">
-
-            </Card>
-            </div>
-            </div>
          </div>);
     }
 }

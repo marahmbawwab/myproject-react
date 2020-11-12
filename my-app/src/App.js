@@ -11,6 +11,7 @@ import signin from './signin.js';
 import Nav from './nav.js';
 import gallary from './gallary';
  class App extends React.Component {
+   
   constructor(props){
     super(props);
     this.state={open:false,op:false};
@@ -29,9 +30,9 @@ import gallary from './gallary';
   //var currentLocation = window.location.pathname;
   return (
     <div >
-     <Router>
-    <div>
+      <Router>
     <Nav/>
+    <div>
    <Switch >
    <Route  path ="/account" component={gallary}/>
    <Route  path ="/signin"  component={signin}/>
@@ -40,7 +41,7 @@ import gallary from './gallary';
    <Route  path ="/" component={welcome} />
    </Switch>
    </div>
-</Router>
+   </Router>
 </div>
   );}
 }

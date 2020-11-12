@@ -27,7 +27,7 @@ export default class signup extends React.Component {
       this.setState({gender:"male"});
      }
      console.log(this.state.gender);
-   if((this.state.name !=="")&&(this.state.usern !=="")&&(this.state.pass!=="")&&(this.state.email!=="")&&(this.phone!=="")&&(this.state.gender!=="")){
+   if((this.state.name !=="")&&(this.state.usern !=="")&&(this.state.pass!=="")&&(this.state.email!=="")&&(this.phone!=="")){
     const json ={name:this.state.name,user:this.state.usern,pass:this.state.pass,phone:this.phone,email:this.state.email,gender:this.state.gender};
   Axios.post("http://localhost:3001/signup",json,{headers: {'Content-Type': 'application/json'}}).then(res => {
   if(res.data.message === 'success!'){

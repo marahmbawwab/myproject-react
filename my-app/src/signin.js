@@ -16,7 +16,7 @@ export default class Signin extends React.Component {
     }
     handleclick=()=>{
       if((this.state.username!=="")&&(this.state.password!=="")){
-        const json ={user:this.state.username,pass:this.state.password};
+  //      const json ={user:this.state.username,pass:this.state.password};
   Axios.get("http://localhost:3001/signin?"+"user="+this.state.username+"&pass="+this.state.password,{headers: {
     'Content-Type': 'application/json',
     "Clear-Site-Data": "*"
@@ -33,7 +33,7 @@ else {
   alert("Please fill all the fields !");
 }
 }
-   render() {
+render() {
     return (
       <div className="Par">
         <div className="d2" >
