@@ -2,7 +2,6 @@ import React from 'react';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import {Checkbox} from 'primereact/checkbox';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
@@ -22,7 +21,12 @@ export default class Signin extends React.Component {
     "Clear-Site-Data": "*"
  }}).then(res => {
  if(res.data.message ==="success!"){
+   if(res.data.type=="admin"){
+    this.props.history.push('/admin');
+   }
+   else{
   this.props.history.push('/account');
+   }
  }
  else {
    alert(res.data.message);
@@ -46,10 +50,6 @@ render() {
           <div className="d5">
             <label htmlFor="pass" style={{ width: "100px", height: "20px" }}><b>Password</b></label>
             <Password  name="pass" onChange={(e) => this.setState({ password: e.target.value })} />
-          </div>
-          <div >
-            <Checkbox onChange={e => this.setState({checked: e.checked})} checked={this.state.checked}></Checkbox>
-            <label htmlFor="pass" style={{padding:"20px"}}className="p-checkbox-label"><b>Remember Me</b></label>
           </div>
           <div  id="d6" >
             <Button className="p-button-rounded p-button-raised p-button-help" label="LOGIN" onClick={this.handleclick} style={{ width: "100%" }} />
