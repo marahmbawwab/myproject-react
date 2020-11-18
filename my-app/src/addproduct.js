@@ -12,11 +12,8 @@ export default class Add extends React.Component {
 render(){
         return(
             <div className="d" >
-             <div className="tt"><b>Welcome Back To Easy Shop </b>
-            <br/><b style={{fontSize:"30px"}}>It's great to have you ! </b>
-            </div>
             <div >
-            <div className="p-text-left dd"><b style={{fontSize:"35px"}}>signup</b></div>
+            <div className="p-text-left dd"><b style={{fontSize:"35px",whiteSpace:"nowrap",marginLeft:"100%"}}>LET'S ADD PRODUCT</b></div>
             <br/>
             <div  className="item">
             <label htmlhtmlFor="full"><b style={{fontSize:"20px"}}>FullName:</b></label>

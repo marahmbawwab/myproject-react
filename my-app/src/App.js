@@ -29,9 +29,8 @@ import addproduct from './addproduct';
     });
     }
  render(){
-  //var currentLocation = window.location.pathname;
   return (
-    <div className="appc">
+    <div >
      <Router>
     <div>
    <Switch >
