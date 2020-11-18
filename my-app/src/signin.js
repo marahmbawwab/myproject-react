@@ -26,7 +26,7 @@ export default class Signin extends React.Component {
    }
    else{
   //this.props.history.push('/account',{ name: 'some_value'});
-  this.props.history.push({pathname: '/account', data:'ddd'});
+  this.props.history.push('/account');
    }
  }
  else {

@@ -41,6 +41,9 @@ const footer = <span>
     <Button label="Show" className="p-button-help" style={{marginLeft: "35%"}}/>
 </span>;
 export default class Admin extends React.Component {
+    handle=()=>{
+        this.props.history.push('/add');
+    }
     render(){
   return(
          <div style={{display:"flex",flexDirection:"column"}}>
@@ -53,7 +56,7 @@ export default class Admin extends React.Component {
     </div>
   <p style={{marginLeft:"50%",color:"rgb(226,226,255)"}}><b>User Name</b></p>
       <img  style={{tooltip:"click to see your cart",marginLeft:"400px",marginTop:"10px"}}src={require('./images/navc.png')}height="40px" width="60px" alt="there is an error" ></img>
-      <img  style={{tooltip:"click to add new product",marginLeft:"20px",marginTop:"10px"}}src={require('./images/add.png')}height="40px" width="40px" alt="there is an error" ></img>
+      <img onClick={this.handle} style={{tooltip:"click to add new product",marginLeft:"20px",marginTop:"10px"}} src={require('./images/add.png')}height="40px" width="40px" alt="there is an error" ></img>
       </div>
       </nav>
      <div style={{display:"flex",flexDirection:"row"}}>

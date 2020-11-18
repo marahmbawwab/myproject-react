@@ -11,6 +11,7 @@ import signin from './signin.js';
 import Nav from './nav.js';
 import gallary from './gallary';
 import admin from './adminpage';
+import addproduct from './addproduct';
  class App extends React.Component {
    
   constructor(props){
@@ -30,11 +31,12 @@ import admin from './adminpage';
  render(){
   //var currentLocation = window.location.pathname;
   return (
-    <div style={{background:"pink"}}>
+    <div className="appc">
      <Router>
     <div>
    <Switch >
    <Route  path ="/admin" component={admin}/>
+   <Route  path ="/add" component={addproduct} />
    <Route  path ="/account" component={gallary}/>
    <Route  path ="/signin"  component={signin}/>
    <Route  path ="/signup" component={signup}/>
