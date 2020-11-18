@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
     }
  render(){
   return (
-   <nav style={{ display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>  
+   <nav style={{display:"flex",alignItems:"center",justifyContent:"flex-end",height:"60px",backgroundColor:"rgb(0,0,0,0.8)"}}>  
      <img  src={require('./images/list.png')}width="40px" height="40px"alt="there is an error" style={{marginRight:"50px"}} onClick={this.handleclick }></img>
      <OverlayPanel ref={el => (this.op = el)}>
      {this.state.open && (
@@ -36,7 +36,7 @@ import { Link } from 'react-router-dom';
     <img  src={require('./images/cart.png')} width="40px" height="40px" alt="there is an error" ></img>
     <p style={{color:"rgb(226,226,255)"}}><b>SHOP</b></p>
     </div>
-   <Link to="/" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"10%"}}><b>Home</b></Link>
+   <Link to="/first"style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"10%"}}><b>Home</b></Link>
    <Link to="/about" style={{textDecoration:"none",color:"rgb(226,226,255)",marginRight:"15%"}}><b>About Us</b></Link>
    </nav> 
   );

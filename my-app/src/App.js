@@ -30,9 +30,9 @@ import admin from './adminpage';
  render(){
   //var currentLocation = window.location.pathname;
   return (
-    <div >
+    <div style={{background:"pink"}}>
+      
       <Router>
-    <Nav/>
     <div>
    <Switch >
    <Route  path ="/admin" component={admin}/>
@@ -40,7 +40,8 @@ import admin from './adminpage';
    <Route  path ="/signin"  component={signin}/>
    <Route  path ="/signup" component={signup}/>
    <Route  path ="/about" component={about}/>
-   <Route  path ="/" component={welcome} />
+   <Route  path ="/first" component={welcome} />
+   <Route  path ="/" component={Nav}/>
    </Switch>
    </div>
    </Router>
