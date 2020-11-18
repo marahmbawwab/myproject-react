@@ -31,8 +31,7 @@ import admin from './adminpage';
   //var currentLocation = window.location.pathname;
   return (
     <div style={{background:"pink"}}>
-      
-      <Router>
+     <Router>
     <div>
    <Switch >
    <Route  path ="/admin" component={admin}/>

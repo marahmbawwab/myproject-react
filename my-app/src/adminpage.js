@@ -40,24 +40,24 @@ const header = <img alt="Card" width="25%" height="20%" src={require('./images/n
 const footer = <span>
     <Button label="Show" className="p-button-help" style={{marginLeft: "35%"}}/>
 </span>;
-export default class gallary extends React.Component {
+export default class Admin extends React.Component {
     render(){
-        return(
+  return(
          <div style={{display:"flex",flexDirection:"column"}}>
-             Adminnnn
-             <nav className="unav">
-      </nav>
-      <div style={{display:"flex",marginLeft:"8%"}}>
-      <div style={{display:"flex",marginLeft:"2%"}}>
+    <nav className="unav">
+    <div style={{display:"flex",marginLeft:"8%"}}>
+      <div style={{display:"flex",marginTop:"10px"}}>
    <p style={{color:"rgb(226,226,255)"}}><b>EASY</b></p>
     <img  src={require('./images/cart.png')}  width="40px" height="40px" alt="there is an error" ></img>
     <p style={{color:"rgb(226,226,255)"}}><b>SHOP</b></p>
     </div>
-      <p style={{marginLeft:"50%"}}><b>User Name</b></p>
-      <img  style={{tooltip:"click to see your cart"}}src={require('./images/navc.png')}height="40px" width="60px" alt="there is an error" ></img>
+  <p style={{marginLeft:"50%",color:"rgb(226,226,255)"}}><b>User Name</b></p>
+      <img  style={{tooltip:"click to see your cart",marginLeft:"400px",marginTop:"10px"}}src={require('./images/navc.png')}height="40px" width="60px" alt="there is an error" ></img>
+      <img  style={{tooltip:"click to add new product",marginLeft:"20px",marginTop:"10px"}}src={require('./images/add.png')}height="40px" width="40px" alt="there is an error" ></img>
       </div>
-      <div style={{display:"flex",flexDirection:"row"}}>
-     <PanelMenu model={items} style={{marginTop:"2%",width:'300px'}}/>
+      </nav>
+     <div style={{display:"flex",flexDirection:"row"}}>
+     <PanelMenu model={items} style={{width:'300px'}}/>
      <div style={{marginLeft:"4%",display:"flex",flexDirection:"column"}}>
           <Card footer={footer} header={header} title="product-name" subTitle="department-name">
 

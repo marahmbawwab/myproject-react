@@ -21,11 +21,12 @@ export default class Signin extends React.Component {
     "Clear-Site-Data": "*"
  }}).then(res => {
  if(res.data.message ==="success!"){
-   if(res.data.type=="admin"){
+   if(res.data.type==="admin"){
     this.props.history.push('/admin');
    }
    else{
-  this.props.history.push('/account');
+  //this.props.history.push('/account',{ name: 'some_value'});
+  this.props.history.push({pathname: '/account', data:'ddd'});
    }
  }
  else {

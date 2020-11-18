@@ -44,6 +44,7 @@ export default class gallary extends React.Component {
     render(){
         return(
          <div style={{display:"flex",flexDirection:"column"}}>
+             
          </div>);
     }
 }
