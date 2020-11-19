@@ -75,5 +75,14 @@ app.get('/getcat', function(req, res) {
     res.send(result);
   });
 });
+app.get('/getdep', function(req, res) {
+  con.query('SELECT id FROM category where name=?',[req.param('name')], function (err, result, fields) {
+    if (err) throw err;
+ con.query('SELECT id,name FROM department where id_cat=?',result[0].id, function (err, result, fields) {
+  if (err) throw err;
+ res.send(result);
+});
+});
+});
 app.listen(3001,()=>{console.log('listening to port 3001');
 });

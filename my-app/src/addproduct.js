@@ -11,20 +11,37 @@ import Axios from 'axios' ;
 export default class Add extends React.Component {
  constructor(){
         super();
-        this.state={name:"",describe:"",quan:"",cat:"",dep:"",size:"", selected1:"",catarray:[]};
-        Axios.get("http://localhost:3001/getcat",{headers: {'Content-Type': 'application/json'
-        ,"Clear-Site-Data": "*"}}).then(res => {
-         this.state.catarray=res.data ;
-        }) ;  
+        this.state={name:"",describe:"",quan:"",cat:"",dep:"",size:"", selected1:"",catarray:[],cat:null,deparray:[],dep:null};
+       
     }
-  
+  componentDidMount(){
+    Axios.get("http://localhost:3001/getcat",{headers: {'Content-Type': 'application/json'
+        ,"Clear-Site-Data": "*"}}).then(res => {
+         this.setState({catarray:res.data});
+        }); 
+  }
     handle=()=>{
     }
-    oncatchange =(e)=> {
-      console.log(this.state.catarray);
-      // this.setState({ selected1: e.value });
-  }
-render(){
+    handlecat=(e)=>{
+   this.state.cat=e.target.value ;
+    if(!(this.state.cat==="Select a Category")&&!(this.state.cat===null)){
+      Axios.get("http://localhost:3001/getdep?"+"name="+this.state.cat,{headers:{'Content-Type': 'application/json'
+      ,"Clear-Site-Data": "*"}}).then(res => {
+        this.setState({deparray:res.data});
+      });   
+    }
+    }
+    handledep=(e)=>{
+      this.state.dep=e.target.value ;
+    }
+    render(){
+  let optionTemplate = this.state.catarray.map(v => (
+    <option value={v.name} key={v.id} >{v.name}</option>
+  ));
+  let depTemplate = this.state.deparray.map(v => (
+    <option value={v.name} key={v.id} >{v.name}</option>
+  ));
+
         return(
             <div className="d" >
             <div >
@@ -42,12 +59,18 @@ render(){
           <br/>
           <div  className="item" >
             <label htmlhtmlFor="cat"><b style={{fontSize:"20px"}}>Category:</b></label>
-            <Dropdown style={{marginLeft:"40%",width:"300%"}} placeholder="Select a Category" value={this.state.selected1} options={this.state.catarray} onChange={this.oncatchange} />
+           <select style={{marginLeft:"15%"}} value={this.state.value} onChange={this.handlecat}>
+              <option selected>Select a Category</option>
+          {optionTemplate}
+        </select>
           </div>
           <br/>
           <div  className="item" >
           <label htmlhtmlFor="dep"><b style={{fontSize:"20px"}}>Department:</b></label>
-            <Dropdown placeholder="Select a Department"style={{marginLeft:"35%",width:"200%"}} onChange={(e)=>this.setState({dep:e.target.value})}/>
+          <select style={{marginLeft:"8%"}} value={this.state.value} onChange={this.handledep}>
+              <option selected>Select a department</option>
+          {depTemplate}
+        </select>
           </div>
           <br/>
           <div className="item">
