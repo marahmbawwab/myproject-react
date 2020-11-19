@@ -7,10 +7,15 @@ import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
 import {Button}  from 'primereact/button';
+import Axios from 'axios' ;
 export default class Add extends React.Component {
     constructor(){
         super();
         this.state={name:"",describe:"",quan:"",cat:"",dep:"",size:""}
+        Axios.get("http://localhost:3001/getcat",{headers: {'Content-Type': 'application/json'
+        ,"Clear-Site-Data": "*"}}).then(res => {
+        }) ;
+        
     }
     handle=()=>{
    console.log(this.state);
