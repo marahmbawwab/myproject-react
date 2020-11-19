@@ -9,17 +9,21 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import {Button}  from 'primereact/button';
 import Axios from 'axios' ;
 export default class Add extends React.Component {
-    constructor(){
+ constructor(){
         super();
-        this.state={name:"",describe:"",quan:"",cat:"",dep:"",size:""}
+        this.state={name:"",describe:"",quan:"",cat:"",dep:"",size:"", selected1:"",catarray:[]};
         Axios.get("http://localhost:3001/getcat",{headers: {'Content-Type': 'application/json'
         ,"Clear-Site-Data": "*"}}).then(res => {
-        }) ;
-        
+         this.state.catarray=res.data ;
+        }) ;  
     }
+  
     handle=()=>{
-   console.log(this.state);
     }
+    oncatchange =(e)=> {
+      console.log(this.state.catarray);
+      // this.setState({ selected1: e.value });
+  }
 render(){
         return(
             <div className="d" >
@@ -38,7 +42,7 @@ render(){
           <br/>
           <div  className="item" >
             <label htmlhtmlFor="cat"><b style={{fontSize:"20px"}}>Category:</b></label>
-            <Dropdown style={{marginLeft:"40%",width:"300%"}} placeholder="Select a Category" onChange={(e)=>this.setState({cat:e.target.value})} />
+            <Dropdown style={{marginLeft:"40%",width:"300%"}} placeholder="Select a Category" value={this.state.selected1} options={this.state.catarray} onChange={this.oncatchange} />
           </div>
           <br/>
           <div  className="item" >

@@ -69,5 +69,11 @@ app.post('/signup', function(req, res) {
     }
   });
 });
+app.get('/getcat', function(req, res) {
+  con.query("SELECT id,name FROM category", function (err, result, fields) {
+    if (err) throw err;
+    res.send(result);
+  });
+});
 app.listen(3001,()=>{console.log('listening to port 3001');
 });
