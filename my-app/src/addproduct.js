@@ -11,8 +11,7 @@ import Axios from 'axios' ;
 export default class Add extends React.Component {
  constructor(){
         super();
-        this.state={name:"",describe:"",quan:"",dep:null,size:null,catarray:[],cat:null,deparray:[],sizes:[]};
-       
+        this.state={name:null,describe:null,quan:null,dep:null,size:null,catarray:[],cat:null,deparray:[],sizes:[]};
     }
   componentDidMount(){
     Axios.get("http://localhost:3001/getcat",{headers: {'Content-Type': 'application/json'
@@ -21,6 +20,19 @@ export default class Add extends React.Component {
         }); 
   }
     handle=()=>{
+  if(!(this.state.name===null)&&!(this.state.describe===null)&&!(this.state.quan===null)&&!(this.state.dep===null)&&!(this.state.size===null)&&!(this.state.cat===null)){
+    Axios.get("http://localhost:3001/addprod?"+"name="+this.state.name+"&desc="+this.state.describe+"&quan="+this.state.quan+"&dep="+this.state.dep+"&size="+this.state.size,{headers: {
+      'Content-Type': 'application/json',
+      "Clear-Site-Data": "*"
+   }}).then(res => {
+    if(res.data.mes==="success"){
+      this.props.history.push('/admin');
+    }
+   });
+   }
+  else {
+        alert("please fill all the fields !") ;
+      }
     }
     handlecat=(e)=>{
    this.state.cat=e.target.value ;
@@ -33,14 +45,14 @@ export default class Add extends React.Component {
     }
     handledep=(e)=>{
       this.state.dep=e.target.value ;
-      if(!(this.state.size==="Select a Category")&&!(this.state.size===null)){
+      if(!(this.state.dep==="Select a Department")&&!(this.state.dep===null)){
         Axios.get("http://localhost:3001/getsize?"+"dep="+this.state.dep,{headers:{'Content-Type': 'application/json'
         ,"Clear-Site-Data": "*"}}).then(res => {
           this.setState({sizes:res.data});
         });   
       }
     }
-    handlesize=()=>{
+    handlesize=(e)=>{
       this.state.size=e.target.value ;
     }
     render(){
@@ -51,7 +63,7 @@ export default class Add extends React.Component {
     <option value={v.name} key={v.id} >{v.name}</option>
   ));
   let sizeTemplate = this.state.sizes.map(v => (
-    <option value={v.name} key={v.id} >{v.name}</option>
+    <option value={v.sizetype} key={v.id} >{v.sizetype}</option>
   ));
         return(
             <div className="d" >
@@ -79,14 +91,14 @@ export default class Add extends React.Component {
           <div  className="item" >
           <label htmlhtmlFor="dep"><b style={{fontSize:"20px"}}>Department:</b></label>
           <select style={{marginLeft:"8%"}} value={this.state.value} onChange={this.handledep}>
-              <option selected>Select a department</option>
+              <option selected>Select a Department</option>
           {depTemplate}
         </select>
           </div>
           <br/>
           <div className="item">
           <label htmlhtmlFor="size"><b style={{fontSize:"20px"}}>Size:</b></label>
-          <select style={{marginLeft:"8%"}} value={this.state.value} onChange={this.handlesize}>
+          <select style={{marginLeft:"25%"}} value={this.state.value} onChange={this.handlesize}>
               <option selected>Select a Size</option>
           {sizeTemplate}
         </select>
@@ -95,7 +107,7 @@ export default class Add extends React.Component {
           <div className="item">
           <label htmlhtmlFor="desc"><b style={{fontSize:"20px",marginLeft:"50%"}}>Description:</b></label>
           <div style={{display: "block"}} >
-          <InputTextarea style={{marginLeft:"30%"}} rows={4} cols={50} onChange={(e)=>this.setState({describe:e.target.value})} />
+          <InputTextarea style={{marginLeft:"33%"}} rows={4} cols={50} onChange={(e)=>this.setState({describe:e.target.value})} />
           </div>
           </div>
           <br/>

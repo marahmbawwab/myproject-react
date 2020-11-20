@@ -87,12 +87,26 @@ app.get('/getdep', function(req, res) {
 app.get('/getsize', function(req, res) {
   con.query('SELECT id FROM department where name=?',[req.param('dep')], function (err, result, fields) {
     if (err) throw err;
- con.query('SELECT id,sizetype FROM department where id_dep=?',result[0].id, function (err, result, fields) {
+ con.query('SELECT id,sizetype FROM size where id_dep=?',result[0].id, function (err, result, fields) {
   if (err) throw err;
  res.send(result);
 });
 });
 });
-
+app.get('/addprod', function(req, res) {
+  con.query('SELECT id FROM department where name=?',[req.param('dep')], function (err, result, fields) {
+    if (err) throw err;
+    con.query('INSERT INTO product (name,quantity,description,size,id_dep,status) VALUES (?,?,?,?,?,?)'
+    ,[req.param('name'),req.param('quan'),req.param('desc'),req.param('size'),result[0].id,1],function (err, result, fields) {
+      if (err) throw err ;
+     if(result.affectedRows===1){
+      res.json({mes:"success"});
+     }
+     else {
+      res.json({mes:"not success!"});
+     }
+    }); 
+ });
+});
 app.listen(3001,()=>{console.log('listening to port 3001');
 });
