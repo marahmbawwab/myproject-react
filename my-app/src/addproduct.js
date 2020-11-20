@@ -11,7 +11,7 @@ import Axios from 'axios' ;
 export default class Add extends React.Component {
  constructor(){
         super();
-        this.state={name:"",describe:"",quan:"",cat:"",dep:"",size:"", selected1:"",catarray:[],cat:null,deparray:[],dep:null};
+        this.state={name:"",describe:"",quan:"",dep:null,size:null,catarray:[],cat:null,deparray:[],sizes:[]};
        
     }
   componentDidMount(){
@@ -33,6 +33,15 @@ export default class Add extends React.Component {
     }
     handledep=(e)=>{
       this.state.dep=e.target.value ;
+      if(!(this.state.size==="Select a Category")&&!(this.state.size===null)){
+        Axios.get("http://localhost:3001/getsize?"+"dep="+this.state.dep,{headers:{'Content-Type': 'application/json'
+        ,"Clear-Site-Data": "*"}}).then(res => {
+          this.setState({sizes:res.data});
+        });   
+      }
+    }
+    handlesize=()=>{
+      this.state.size=e.target.value ;
     }
     render(){
   let optionTemplate = this.state.catarray.map(v => (
@@ -41,7 +50,9 @@ export default class Add extends React.Component {
   let depTemplate = this.state.deparray.map(v => (
     <option value={v.name} key={v.id} >{v.name}</option>
   ));
-
+  let sizeTemplate = this.state.sizes.map(v => (
+    <option value={v.name} key={v.id} >{v.name}</option>
+  ));
         return(
             <div className="d" >
             <div >
@@ -75,7 +86,10 @@ export default class Add extends React.Component {
           <br/>
           <div className="item">
           <label htmlhtmlFor="size"><b style={{fontSize:"20px"}}>Size:</b></label>
-            <Dropdown placeholder="Select a Size" style={{marginLeft:"45%",width:"300%"}} onChange={(e)=>this.setState({size:e.target.value})} />
+          <select style={{marginLeft:"8%"}} value={this.state.value} onChange={this.handlesize}>
+              <option selected>Select a Size</option>
+          {sizeTemplate}
+        </select>
           </div>
           <br/>
           <div className="item">

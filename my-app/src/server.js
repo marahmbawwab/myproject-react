@@ -84,5 +84,15 @@ app.get('/getdep', function(req, res) {
 });
 });
 });
+app.get('/getsize', function(req, res) {
+  con.query('SELECT id FROM department where name=?',[req.param('dep')], function (err, result, fields) {
+    if (err) throw err;
+ con.query('SELECT id,sizetype FROM department where id_dep=?',result[0].id, function (err, result, fields) {
+  if (err) throw err;
+ res.send(result);
+});
+});
+});
+
 app.listen(3001,()=>{console.log('listening to port 3001');
 });
