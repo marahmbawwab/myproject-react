@@ -57,7 +57,7 @@
 .d{
     display: flex;
     flex-direction: row;
-    background-image: url('./images/addimage.jpg') ;
+    background-image: linear-gradient(pink,cyan,pink) ;
 }
 .dd {
     align-self: auto;

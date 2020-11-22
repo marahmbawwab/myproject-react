@@ -9,9 +9,10 @@ import welcome from './welcomep.js';
 import signup from './signup.js';
 import signin from './signin.js';
 import Nav from './nav.js';
-import gallary from './gallary';
-import admin from './adminpage';
-import addproduct from './addproduct';
+import gallary from './gallary.js';
+import admin from './adminpage.js';
+import addproduct from './addproduct.js';
+import viewcart from './viewcart.js';
  class App extends React.Component {
    
   constructor(props){
@@ -35,6 +36,7 @@ import addproduct from './addproduct';
     <div>
    <Switch >
    <Route  path ="/admin" component={admin}/>
+   <Route  path ="/showcart" component={viewcart}/>
    <Route  path ="/add" component={addproduct} />
    <Route  path ="/account" component={gallary}/>
    <Route  path ="/signin"  component={signin}/>

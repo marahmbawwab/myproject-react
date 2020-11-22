@@ -58,6 +58,13 @@ app.post('/signup', function(req, res) {
           if (err) throw err;
          if(result.affectedRows===1){
           res.json({message:"success!"});
+          con.query('SELECT id from user_info where username=?',[req.body.user],function (err, result, fields) {
+            if (err) throw err;
+      con.query('INSERT INTO cart (status,id_user) VALUES (?,?)'
+            ,[1,result[0].id],function (err, result, fields) {
+              if (err) throw err;
+            });
+          });
          }
          else {
           res.json({message:"not success!"});
@@ -108,5 +115,6 @@ app.get('/addprod', function(req, res) {
     }); 
  });
 });
+
 app.listen(3001,()=>{console.log('listening to port 3001');
 });
