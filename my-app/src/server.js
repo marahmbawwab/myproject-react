@@ -145,5 +145,27 @@ con.query('SELECT id_order FROM cart_products where id_cat=?',result[0].id, func
   });
 });
 });
+app.get('/showproducts', function(req, res) {
+  con.query('SELECT * FROM product where id_dep=?',[req.param('id')], function (err, result, fields) {
+    if (err) throw err;
+    if(result.affectedRows > 0){
+  res.send({mes:"success",res:result});
+    }
+    else {
+      res.send({mes:"error",res:[]})
+    }
+  });
+});
+app.get('/showspecificproduct', function(req, res) {
+  con.query('SELECT * FROM product where id=?',[req.param('id')], function (err, result, fields) {
+    if (err) throw err;
+    if(result.affectedRows > 0){
+  res.send({mes:"success",res:result});
+    }
+    else {
+      res.send({mes:"error",res:[]})
+    }
+  });
+});
 app.listen(3001,()=>{console.log('listening to port 3001');
 });
