@@ -116,5 +116,34 @@ app.get('/addprod', function(req, res) {
  });
 });
 
+app.get('/getcart', function(req, res) {
+  con.query('SELECT id FROM cart where id_user=?',[req.param('id')], function (err, result, fields) {
+    if (err) throw err;
+con.query('SELECT id_order FROM cart_products where id_cat=?',result[0].id, function (err, result, fields) {
+      if (err) throw err;
+      
+    if(result.affectedRows > 0){
+      let id =result[0].id_order ;
+    con.query('SELECT * FROM order_status where id_order=?',result[0].id_order, function (err, result, fields) {
+      if (err) throw err;
+   let date =result[0].dateorder ;
+   let orderstate = result[0].status_order ;
+   con.query('SELECT * FROM orders where id=?',id, function (err, result, fields) {
+    if (err) throw err;
+    let q =result[0].quantity ;
+    let id_prd = result[0].id_product ;
+    con.query('SELECT name FROM product where id=?',id_prd, function (err, result, fields) {
+      if (err) throw err;
+      res.send({mes:"success!",res:[{orderid:id,name:result[0].name ,quan:q ,odate:date,ostate:orderstate}]});
+    });
+ });
+});
+ } 
+ else {
+      res.send({mes:"error",res:[]});
+    }
+  });
+});
+});
 app.listen(3001,()=>{console.log('listening to port 3001');
 });
