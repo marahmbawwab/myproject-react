@@ -6,7 +6,7 @@ import './mydesign.css';
 
 export default class gallary extends React.Component {
     handle=()=>{
-        this.props.history.push('/showcart');
+        this.props.history.push({pathname:'/showcart',state:{id:this.props.location.state.id}});
     }
     render(){
         return(

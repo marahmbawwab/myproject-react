@@ -40,7 +40,7 @@ app.get('/signin', function(req, res) {
     }
     else {
       if(result[0].password===md5(req.param('pass'))){
-        res.json({message:"success!",type:result[0].type});
+        res.json({message:"success!",type:result[0].type,id:result[0].id});
       }
       else {
         res.json({message:"there is an error in password"});

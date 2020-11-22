@@ -33,7 +33,7 @@ export default class gallary extends React.Component {
         <div>{item.year}</div>
       </li>
     ))}
-  </ul>
-         </div>);
+  </ul> 
+  </div>);
     }
 }

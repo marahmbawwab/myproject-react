@@ -22,11 +22,10 @@ export default class Signin extends React.Component {
  }}).then(res => {
  if(res.data.message ==="success!"){
    if(res.data.type==="admin"){
-    this.props.history.push('/admin');
+    this.props.history.push({pathname:'/admin',state:{id:res.data.id}});
    }
    else{
-  //this.props.history.push('/account',{ name: 'some_value'});
-  this.props.history.push('/account');
+  this.props.history.push({pathname:'/account',state:{id:res.data.id}});
    }
  }
  else {
