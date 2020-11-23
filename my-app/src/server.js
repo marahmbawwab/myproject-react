@@ -123,6 +123,7 @@ con.query('SELECT id_order FROM cart_products where id_cat=?',result[0].id, func
       if (err) throw err;
       
     if(result.affectedRows > 0){
+      for(i =0;i < result.length ; i++){
       let id =result[0].id_order ;
     con.query('SELECT * FROM order_status where id_order=?',result[0].id_order, function (err, result, fields) {
       if (err) throw err;
@@ -138,6 +139,7 @@ con.query('SELECT id_order FROM cart_products where id_cat=?',result[0].id, func
     });
  });
 });
+}
  } 
  else {
       res.send({mes:"error",res:[]});
